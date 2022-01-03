@@ -1,0 +1,21 @@
+<h1>רשימת מוצרים</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ברקוד</th>
+      <th scope="col">שם מוצר</th>
+      <th scope="col">מחיר</th>
+      <th scope="col">במלאי</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let prodoct of products">
+      <th scope="row">{{prodoct.id}}</th>
+      <td>{{prodoct.barcode}}</td>
+      <td>{{prodoct.name}}</td>
+      <td>{{prodoct.price}}</td>
+      <td>{{prodoct.price}}</td>
+    </tr>
+  </tbody>
+</table>
