@@ -7,6 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewProductComponent implements OnInit {
 
+
+  prudect = {
+    id: "",
+    barcode: "",
+    name: "",
+    cost: "",
+    price: "",
+    stock: "",
+    typeId: "",
+    doubtId: "",
+    note: "",
+    employee: ""
+  }
+
   constructor() { }
 
   ngOnInit(): void {

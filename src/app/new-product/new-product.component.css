@@ -1,0 +1,15 @@
+*{
+    font-weight: bold;
+}
+
+h1{
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5vh
+}
+
+.div-input{
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 3vh;
+}

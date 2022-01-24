@@ -3,7 +3,6 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">ברקוד</th>
       <th scope="col">שם מוצר</th>
       <th scope="col">מחיר</th>
       <th scope="col">במלאי</th>
@@ -12,10 +11,9 @@
   <tbody>
     <tr *ngFor="let prodoct of products">
       <th scope="row">{{prodoct.id}}</th>
-      <td>{{prodoct.barcode}}</td>
       <td>{{prodoct.name}}</td>
       <td>{{prodoct.price}}</td>
-      <td>{{prodoct.price}}</td>
+      <td>{{prodoct.stock}}</td>
     </tr>
   </tbody>
 </table>

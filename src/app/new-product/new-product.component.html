@@ -1,1 +1,74 @@
-<p>new-product works!</p>
+<h1>מוצר חדש</h1>
+
+<form>
+    <div class="input-group div-input">
+        <span class="input-group-text">ברקוד:</span>
+        <input type="text" class="form-control" name="barcode" [(ngModel)]="prudect.barcode">
+    </div>
+
+    <div class="input-group div-input">
+        <span class="input-group-text">שם מוצר:</span>
+        <input type="text" class="form-control" name="name" [(ngModel)]="prudect.name">
+    </div>
+
+    
+    <div class="mb-3 row div-input">
+        <div class="col" >
+            <div class="mb-3">
+                <label for="cost" class="form-label">מחיר:</label>
+                <div class="input-group">
+                    <span class="input-group-text">₪</span>
+                    <input type="text" class="form-control" name="price" [(ngModel)]="prudect.price">
+                </div>
+            </div>
+        </div>
+        <div class="col" >
+            <div class="mb-3">
+                <label for="cost" class="form-label">עלות:</label>
+                <div class="input-group">
+                    <span class="input-group-text">₪</span>
+                    <input type="text" class="form-control" name="cost" [(ngModel)]="prudect.cost">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-group div-input">
+        <span class="input-group-text">כמות במלאי:</span>
+        <input type="text" class="form-control"  name="stock" [(ngModel)]="prudect.stock">
+    </div>
+
+    <div class="mb-3 row div-input">
+        <div class="col" >
+            <div class="mb-3">
+                <label for="cost" class="form-label">מחלקה:</label>
+                <div class="input-group">
+                    <select class="form-select" aria-label="Default" name="typeId" [(ngModel)]="prudect.typeId">
+                        
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col" >
+            <div class="mb-3">
+                <label for="cost" class="form-label">ספק:</label>
+                <div class="input-group">
+                    <select class="form-select" aria-label="Default" name="doubtId" [(ngModel)]="prudect.doubtId">
+                        
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="div-input">
+        <label for="cost" class="form-label">הערה:</label>
+        <textarea class="form-control" name="Text1" cols="40" rows="2" name="note" [(ngModel)]="prudect.note"></textarea>
+    </div>
+
+    <div class="d-grid gap-2 div-input">
+        <button class="btn btn-primary" type="button">שמור מוצר</button>
+      </div>
+ 
+    
+</form>
