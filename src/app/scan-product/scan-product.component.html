@@ -1,0 +1,68 @@
+<h1>סרוק מוצר</h1>
+
+<form>
+    <input type="text" class="form-control" name="barcodeInput" [(ngModel)]="barcodeInput" (input)="productTest()">
+    <div *ngIf="!existingProduct && barcodeInput.length > 3">
+        <div style="background-color: red;">
+            <p style="font-weight: bold; color: white; text-align: center;">מוצר לא קיים במערכת</p>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto" style="font-weight: bold;">
+            <a [routerLink]="['/new/' + barcodeInput]" ><button class="btn btn-primary" type="button">הוסף מוצר זה<span style="float: left;"><i class="bi bi-plus-square"></i></span></button></a>
+            <a  href="/scan" ><button class="btn btn-primary" type="button">סרוק מוצר אחר<span style="float: left;"><i class="bi bi-upc-scan"></i></span></button></a>
+        </div>
+    </div>
+    <ng-barcode-detector (detect)="onDetect($event)"></ng-barcode-detector>
+    <!-- מוצר קיים -->
+    <div *ngIf="existingProduct && barcodeInput.length > 3">
+        <div style="background-color: green;">
+                <p style="font-weight: bold; color: white; text-align: center;">מוצר קיים במערכת!</p>
+        </div>
+        <div>
+            <p>{{product.name}}. {{product.stock}} במלאי. מחיר: {{product.price}} ש"ח</p>
+        </div>
+
+        <div class="mb-3 row" style="width: 70%; margin: auto auto;">
+            <div class="col" >
+                <div class="mb-3">
+                    <label for="cost" class="form-label">מחיר:</label>
+                    <div class="input-group">
+                        <span class="input-group-text">₪</span>
+                        <input type="text" class="form-control" name="price" [(ngModel)]="copyProduct.price" (input)="updatInput()">
+                    </div>
+                </div>
+            </div>
+            <div class="col" >
+                <div class="mb-3">
+                    <label for="cost" class="form-label">במלאי:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-minecart-loaded"></i></span>
+                        <input type="text" class="form-control" name="cost" [(ngModel)]="copyProduct.stock" (input)="updatInput()">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p style="font-weight: bold; color: green; text-align: center;">{{message}}</p>
+
+        <!-- <div class="input-group mb-3" style="width: 70%; margin: auto auto;">
+            <input type="text" class="form-control" placeholder="עדכן מלאי">
+            <button class="btn btn-primary" style="width: auto; height: auto; margin-left: 2%;" type="button"><i class="bi bi-minecart-loaded"></i></button>
+            <input type="text" class="form-control" placeholder="עדכן מחיר" [(ngModel)]="product.price" name="inputPrice">
+            <button class="btn btn-primary" style="width: auto; height: auto;" type="button"  (click)="updatPrice()"><i class="bi bi-coin"></i></button>
+        </div> -->
+
+        <div class="d-grid gap-2 col-6 mx-auto" style="font-weight: bold;">
+            <button class="btn btn-primary" type="button" [disabled]="!changes" (click)="saveChanges()">שמור שינויים<span style="float: left;" ><i class="bi bi-check-square"></i></span></button>
+
+            <a [routerLink]="['/single/' + product.id]" ><button class="btn btn-primary" type="button">ערוך פרטי מוצר<span style="float: left;"><i class="bi bi-ui-checks"></i></span></button></a>
+          
+            <!-- <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#updateStock" aria-expanded="false" aria-controls="updateStock">עדכן מלאי<span style="float: left;"><i class="bi bi-minecart-loaded"></i></span></button>
+            
+           <button class="btn btn-primary" type="button"  data-bs-toggle="collapse" data-bs-target="#updatePrice" aria-expanded="false" aria-controls="updatePrice">עדכן מחיר<span style="float: left;"><i class="bi bi-cash-coin"></i></span></button> -->
+            
+           <a  href="/scan" ><button class="btn btn-primary" type="button">סרוק מוצר אחר<span style="float: left;"><i class="bi bi-upc-scan"></i></span></button></a>
+        </div>
+    </div>
+    
+    
+</form>
+

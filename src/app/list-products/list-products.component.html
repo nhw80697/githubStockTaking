@@ -1,4 +1,12 @@
 <h1>רשימת מוצרים</h1>
+
+
+  <a  href="/new">
+    <div class="d-grid gap-2">
+      <button class="btn btn-primary">מוצר חדש</button>
+    </div>
+  </a>
+
 <table class="table">
   <thead>
     <tr>
@@ -9,10 +17,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let prodoct of products">
+    <tr *ngFor="let prodoct of products" (click)="showSingle(prodoct.id)">
       <th scope="row">{{prodoct.id}}</th>
       <td>{{prodoct.name}}</td>
-      <td>{{prodoct.price}}</td>
+      <td> {{prodoct.price}} ₪</td>
       <td>{{prodoct.stock}}</td>
     </tr>
   </tbody>

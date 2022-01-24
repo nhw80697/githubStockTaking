@@ -1,0 +1,13 @@
+<h1>הגדרות</h1>
+
+<form class="row g-3" style="width: 80%; margin: auto auto; border-bottom: solid;">
+    <h2>הוסף מחלקה</h2>
+    <input type="text" name="inputType" #inputType style="margin-left: 1%" placeholder="הקלד כאן את שם המחלקה החדשה">
+    <button type="submit" class="btn btn-primary mb-3" (click)="newType(inputType.value); inputType.value=''">הוסף מחלקה חדשה</button>
+</form>
+
+<form class="row g-3" style="width: 80%; margin: auto auto;">
+    <h2>הוסף ספק</h2>
+    <input type="text" name="inputProvider" #inputProvider style="margin-left: 1%" placeholder="הקלד כאן את שם הספק החדש">
+    <button type="submit" class="btn btn-primary mb-3" (click)="newProvider(inputProvider.value); inputProvider.value=''">הוסף ספק חדש</button>
+</form>

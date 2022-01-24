@@ -1,14 +1,14 @@
-<h1>מוצר חדש</h1>
+<h1>ערוך מוצר</h1>
 
-<form  #myForm="ngForm" (submit)="addNewProduct(prudect); myForm.resetForm()">
+<form #myForm="ngForm" (submit)="updateProduct(product); myForm.resetForm()" (keyup)="updatForm()">
     <div class="input-group div-input">
         <span class="input-group-text">ברקוד:</span>
-        <input type="text" class="form-control" name="barcode" [(ngModel)]="prudect.barcode">
+        <input type="text" class="form-control" name="barcode" [(ngModel)]="product.barcode">
     </div>
 
     <div class="input-group div-input">
         <span class="input-group-text">שם מוצר:</span>
-        <input type="text" class="form-control" name="name" [(ngModel)]="prudect.name">
+        <input type="text" class="form-control" name="name" [(ngModel)]="product.name">
     </div>
 
     
@@ -18,7 +18,7 @@
                 <label for="cost" class="form-label">מחיר:</label>
                 <div class="input-group">
                     <span class="input-group-text">₪</span>
-                    <input type="number" class="form-control" name="price" [(ngModel)]="prudect.price">
+                    <input type="text" class="form-control" name="price" [(ngModel)]="product.price">
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 <label for="cost" class="form-label">עלות:</label>
                 <div class="input-group">
                     <span class="input-group-text">₪</span>
-                    <input type="tel" class="form-control" name="cost" [(ngModel)]="prudect.cost">
+                    <input type="text" class="form-control" name="cost" [(ngModel)]="product.cost">
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
 
     <div class="input-group div-input">
         <span class="input-group-text">כמות במלאי:</span>
-        <input type="text" class="form-control"  name="stock" [(ngModel)]="prudect.stock">
+        <input type="text" class="form-control"  name="stock" [(ngModel)]="product.stock">
     </div>
 
     <div class="mb-3 row div-input">
@@ -43,7 +43,7 @@
             <div class="mb-3">
                 <label for="cost" class="form-label">מחלקה:</label>
                 <div class="input-group">
-                    <select class="form-select" aria-label="Default" name="typeId" [(ngModel)]="prudect.typeId">
+                    <select class="form-select" aria-label="Default" name="typeId" [(ngModel)]="product.typeId">
                         <option *ngFor="let type of types">
                             {{type.name}}
                         </option>
@@ -55,7 +55,7 @@
             <div class="mb-3">
                 <label for="cost" class="form-label">ספק:</label>
                 <div class="input-group">
-                    <select class="form-select" aria-label="Default" name="doubtId" [(ngModel)]="prudect.doubtId">
+                    <select class="form-select" aria-label="Default" name="doubtId" [(ngModel)]="product.doubtId">
                         <option *ngFor="let provider of providers">
                             {{provider.name}}
                         </option>
@@ -67,22 +67,23 @@
 
     <div class="div-input">
         <label for="cost" class="form-label">הערה:</label>
-        <textarea class="form-control" name="Text1" cols="40" rows="2" name="note" [(ngModel)]="prudect.note"></textarea>
+        <textarea class="form-control" name="Text1" cols="40" rows="2" name="note" [(ngModel)]="product.note"></textarea>
     </div>
 
-    <div class="d-grid gap-2 div-input">
-        <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#response">שמור מוצר</button>
-      </div>
+    <div class="btn-group" style="width: 50%; margin: 0 auto; display: block;">
+        <button  [disabled]="!changes" class="btn btn-primary" style="float: right;" type="submit" data-bs-toggle="modal" data-bs-target="#response">שמור שינויים</button>
+        <button class="btn btn-danger" style="float: left;" (click)="deleteProduct(product.id)" data-bs-toggle="modal" data-bs-target="#response">מחק מוצר</button>
+      </div> 
  
       <!-- Modal -->
     <div class="modal fade" id="response" tabindex="-1" aria-labelledby="response" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    {{prudect.name}} {{response}}
+                    {{product.name}} {{response}}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">אישור</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="routeToList()" >אישור</button>
                 </div>
             </div>
         </div>
